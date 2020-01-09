@@ -9,6 +9,8 @@ PASS=$5
 CONTAINER=$(docker run -d $IMAGE sh -c 'while sleep 3600; do :; done')
 
 docker exec $CONTAINER /bin/sh -c "./d_script.sh $API_KEY $URL $USERNAME $PASS"
+#uncoment if you want to get artifacts from docker container to your local machine
+#docker cp $CONTAINER:/home/node/app/artifacts/ ./ 
 
 if [ $? -eq 0 ]; then 
 	docker stop $CONTAINER; 

@@ -66,6 +66,9 @@ async function auth(url) {
 			return console.log(new Error("Incorrect username or password!"))
 		}
 	}
+	if (check_code(url) === 400) {
+		return console.log(new Error(check_code(url) + " Can`t connect to the website!" ))
+	}
 }
 
 //function to get url for downloading video
